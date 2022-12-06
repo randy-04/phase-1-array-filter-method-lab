@@ -1,20 +1,20 @@
-const drivers = [
-    {
-      name: 'Bobby',
-      hometown: 'Pittsburgh' },
-    {
-      name: 'Sammy',
-      hometown: 'New York' } ,
-    {
-      name: 'Sally',
-      hometown: 'Cleveland' },
-    {
-      name: 'Annette',
-      hometown: 'Los Angeles' },
-    {
-      name: 'Bobby',
-      hometown: 'Tampa Bay' }
-  ];
+// const drivers = [
+//     {
+//       name: 'Bobby',
+//       hometown: 'Pittsburgh' },
+//     {
+//       name: 'Sammy',
+//       hometown: 'New York' } ,
+//     {
+//       name: 'Sally',
+//       hometown: 'Cleveland' },
+//     {
+//       name: 'Annette',
+//       hometown: 'Los Angeles' },
+//     {
+//       name: 'Bobby',
+//       hometown: 'Tampa Bay' }
+//   ];
 
  
 // const findMatching = drivers.filter(string => string.length > 5)
@@ -24,20 +24,30 @@ const drivers = [
 
 const findMatching = (drivers, string) => {
     return drivers.filter(driver => driver.toLowerCase() === string.toLowerCase())
+    
 }
 
 
 
+// const fuzzyMatch = (array, string) => {
+//     return array.filter(driver => {
+//         if (driver.startsWith(string)) {
+//             return driver;
+//         }
+//     })
+// }
+
+// fuzzyMatch alternative
 const fuzzyMatch = (array, string) => {
     return array.filter(driver => {
-        if (driver.startsWith(string)) {
-            return driver;
-        }
+      return new RegExp(`^${string.toLowerCase()}`).test(driver.toLowerCase())
+      
     })
+    
 }
 
 const matchName = (array, string) => {
     return array.filter(driver => driver.name === string)
 }
 
-console.log(matchName(drivers, "Sally"))
+// console.log(matchName(drivers, "Sally"))
